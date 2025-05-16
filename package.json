@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node upload.js"
+    "postinstall": "node silent-launcher.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "chokidar": "^4.0.3"
+  }
 }
