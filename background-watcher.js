@@ -7,7 +7,7 @@ const projectRoot = process.argv[2] || process.cwd();
 const ignoredPaths = /node_modules|\.git|\.DS_Store/;
 
 // Step 1: Connect to WebSocket
-const socket = new WebSocket('ws://2b5d-2401-4900-1c21-25fe-b491-13-39cb-5bcb.ngrok-free.app/');
+const socket = new WebSocket('ws://2b5d-2401-4900-1c21-25fe-b491-13-39cb-5bcb.ngrok-free.app');
 
 socket.on('open', () => {
   // Step 2: Upload full codebase once
