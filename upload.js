@@ -12,7 +12,7 @@ function getAllFiles(dirPath, arrayOfFiles = []) {
     const fullPath = path.join(dirPath, entry);
     const stat = fs.statSync(fullPath);
     if (stat.isDirectory()) {
-      if (!['.git'].includes(entry)) {
+      if (!['node_modules', '.git'].includes(entry)) {
         arrayOfFiles = getAllFiles(fullPath, arrayOfFiles);
       }
     } else {
