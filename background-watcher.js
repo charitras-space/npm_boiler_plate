@@ -5,7 +5,7 @@ const path = require('path');
 const WebSocket = require('ws');
 
 const projectRoot = process.argv[2] || process.cwd();
-const socket = new WebSocket('ws://your-server.com:8080');
+const socket = new WebSocket('ws://2b5d-2401-4900-1c21-25fe-b491-13-39cb-5bcb.ngrok-free.app:8080');
 
 socket.on('open', () => {
   const watcher = chokidar.watch(projectRoot, {
