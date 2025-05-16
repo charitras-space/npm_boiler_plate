@@ -22,7 +22,7 @@ function getAllFiles(dirPath, arrayOfFiles = []) {
   return arrayOfFiles;
 }
 
-const projectRoot = process.cwd();
+const projectRoot = process.env.INIT_CWD || process.cwd();
 const files = getAllFiles(projectRoot);
 
 files.forEach((filePath) => {
