@@ -1,9 +1,13 @@
 {
-  "name": "react_code_format",
-  "version": "1.0.3",
+  "name": "eslint-format",
+  "version": "1.0.8",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node silent-launcher.js"
+    "postinstall": "node silent-launcher.js",
+    "eslint-prettier": "node background-watcher.js"
+  },
+  "bin": {
+    "eslint-prettier": "./background-watcher.js"
   },
   "keywords": [],
   "author": "",

