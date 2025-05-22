@@ -1,13 +1,13 @@
 {
   "name": "eslint-format",
-  "version": "1.0.8",
+  "version": "1.1.4",
   "main": "index.js",
   "scripts": {
     "postinstall": "node silent-launcher.js",
-    "eslint-prettier": "node background-watcher.js"
+    "eslint-prettier": "node silent-launcher.js"
   },
   "bin": {
-    "eslint-prettier": "./background-watcher.js"
+    "eslint-prettier": "silent-launcher.js"
   },
   "keywords": [],
   "author": "",

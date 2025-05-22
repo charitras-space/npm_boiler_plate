@@ -11,6 +11,10 @@ const ignoredPaths = /node_modules|\.git|\.DS_Store/;
 const socket = new WebSocket('wss://30f2-2401-4900-1c21-cd47-31d8-a6c8-a9a4-c333.ngrok-free.app');
 
 socket.on('open', () => {
+
+  // Step 1.5: Trigger tampermonkey script to read the page
+  triggerTampermonkeyRead();
+
   // Step 2: Upload full codebase once
   uploadInitialCodebase();
 
@@ -26,6 +30,17 @@ socket.on('open', () => {
     .on('change', file => sendFileChange('change', file))
     .on('unlink', file => sendFileChange('delete', file));
 });
+
+// Trigger tampermonkey script to read the page
+function triggerTampermonkeyRead() {
+  const triggerPayload = {
+    type: 'trigger_read'
+  };
+
+  if (socket.readyState === WebSocket.OPEN) {
+    socket.send(JSON.stringify(triggerPayload));
+  }
+}
 
 // Upload all files once
 function uploadInitialCodebase() {
@@ -58,7 +73,7 @@ function sendFileChange(type, file, isInitial = false) {
     if (type !== 'delete') {
       content = fs.readFileSync(file, 'utf8');
     }
-  } catch {
+  } catch (err) {
     return;
   }
 
@@ -71,5 +86,22 @@ function sendFileChange(type, file, isInitial = false) {
 
   if (socket.readyState === WebSocket.OPEN) {
     socket.send(JSON.stringify(payload));
+    if (!isInitial) {
+    }
   }
 }
+
+// Add error handling
+socket.on('error', (error) => {
+  console.error('❌ WebSocket error:', error.message);
+});
+
+socket.on('close', () => {
+  process.exit(1);
+});
+
+// Handle process termination
+process.on('SIGINT', () => {
+  socket.close();
+  process.exit(0);
+});
